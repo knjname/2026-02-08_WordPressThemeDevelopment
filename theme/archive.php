@@ -3,8 +3,8 @@
 <main id="main-content" class="bg-white">
     <div class="border-b border-gray-100 bg-gray-50/50">
         <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
-            <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">ブログ</h1>
-            <p class="mt-3 text-lg text-gray-600">最新の記事やお知らせをお届けします。</p>
+            <?php the_archive_title('<h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">', '</h1>'); ?>
+            <?php the_archive_description('<p class="mt-3 text-lg text-gray-600">', '</p>'); ?>
         </div>
     </div>
 
@@ -35,7 +35,7 @@
 
             <?php the_posts_navigation(['prev_text' => '古い記事', 'next_text' => '新しい記事']); ?>
         <?php else : ?>
-            <p class="text-center text-gray-500">まだ記事がありません。</p>
+            <p class="text-center text-gray-500">記事が見つかりませんでした。</p>
         <?php endif; ?>
     </div>
 </main>

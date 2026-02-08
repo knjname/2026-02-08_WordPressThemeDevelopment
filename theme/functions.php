@@ -11,6 +11,7 @@ function mywptheme_setup() {
         'caption',
     ]);
     add_theme_support('custom-logo');
+    add_image_size('card-thumbnail', 640, 360, true);
 
     register_nav_menus([
         'primary' => 'メインメニュー',
@@ -66,3 +67,41 @@ function mywptheme_enqueue_assets() {
     }
 }
 add_action('wp_enqueue_scripts', 'mywptheme_enqueue_assets');
+
+add_filter('excerpt_length', function () {
+    return 80;
+});
+
+add_filter('excerpt_more', function () {
+    return '…';
+});
+
+function mywptheme_comment($comment, $args, $depth) {
+    ?>
+    <li <?php comment_class(''); ?> id="comment-<?php comment_ID(); ?>">
+        <div class="flex gap-4">
+            <div class="shrink-0">
+                <?php echo get_avatar($comment, $args['avatar_size'], '', '', ['class' => 'rounded-full']); ?>
+            </div>
+            <div class="flex-1">
+                <div class="flex items-center gap-2">
+                    <span class="text-sm font-semibold text-gray-900"><?php comment_author(); ?></span>
+                    <time class="text-xs text-gray-400" datetime="<?php comment_date('c'); ?>"><?php comment_date(); ?></time>
+                </div>
+                <div class="mt-2 text-sm leading-relaxed text-gray-600">
+                    <?php comment_text(); ?>
+                </div>
+                <div class="mt-2">
+                    <?php
+                    comment_reply_link(array_merge($args, [
+                        'depth'     => $depth,
+                        'max_depth' => $args['max_depth'],
+                        'before'    => '<span class="text-xs font-medium text-indigo-600 hover:text-indigo-500">',
+                        'after'     => '</span>',
+                    ]));
+                    ?>
+                </div>
+            </div>
+        </div>
+    <?php
+}

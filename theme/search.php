@@ -3,8 +3,10 @@
 <main id="main-content" class="bg-white">
     <div class="border-b border-gray-100 bg-gray-50/50">
         <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
-            <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">ブログ</h1>
-            <p class="mt-3 text-lg text-gray-600">最新の記事やお知らせをお届けします。</p>
+            <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                「<?php echo esc_html(get_search_query()); ?>」の検索結果
+            </h1>
+            <p class="mt-3 text-lg text-gray-600"><?php printf('%s件の記事が見つかりました。', (int) $wp_query->found_posts); ?></p>
         </div>
     </div>
 
@@ -33,9 +35,14 @@
                 <?php endwhile; ?>
             </div>
 
-            <?php the_posts_navigation(['prev_text' => '古い記事', 'next_text' => '新しい記事']); ?>
+            <?php the_posts_navigation(['prev_text' => '古い結果', 'next_text' => '新しい結果']); ?>
         <?php else : ?>
-            <p class="text-center text-gray-500">まだ記事がありません。</p>
+            <div class="text-center">
+                <p class="text-gray-500">検索条件に一致する記事が見つかりませんでした。</p>
+                <div class="mx-auto mt-6 max-w-md">
+                    <?php get_search_form(); ?>
+                </div>
+            </div>
         <?php endif; ?>
     </div>
 </main>

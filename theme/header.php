@@ -8,6 +8,8 @@
 <body <?php body_class('antialiased text-gray-800 bg-white'); ?>>
 <?php wp_body_open(); ?>
 
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-indigo-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg">コンテンツへスキップ</a>
+
 <header class="sticky top-0 z-50 border-b border-gray-200/60 bg-white/80 backdrop-blur-lg">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <!-- ロゴ -->

@@ -1,0 +1,87 @@
+// カスタムスタイル（Tailwindで対応できないもの）
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+*:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background-color: #c7d2fe;
+  color: #312e81;
+}
+
+// WordPress管理バー対応
+.admin-bar {
+  header.sticky {
+    top: 32px;
+  }
+
+  @media (max-width: 782px) {
+    header.sticky {
+      top: 46px;
+    }
+  }
+}
+
+// 投稿ナビゲーション
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4f46e5;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    transition: all 150ms ease;
+
+    &:hover {
+      background-color: #eef2ff;
+      border-color: #a5b4fc;
+    }
+  }
+}
+
+// WordPress画像
+.wp-caption {
+  max-width: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.wp-caption-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alignleft {
+  float: left;
+  margin-right: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.alignright {
+  float: right;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
